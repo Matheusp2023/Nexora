@@ -1,4 +1,4 @@
-package org.nexora.engine.scene;
+package org.nexora.engine.renderer;
 
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.*;

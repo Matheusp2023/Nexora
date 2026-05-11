@@ -3,7 +3,6 @@ package org.nexora.engine.renderer;
 import org.lwjgl.opengl.GL;
 import org.nexora.engine.core.Window;
 import org.nexora.engine.scene.Scene;
-import org.nexora.engine.scene.SceneRender;
 
 import static org.lwjgl.opengl.GL11C.*;
 
@@ -13,6 +12,7 @@ public class Render {
 
     public Render() {
         GL.createCapabilities();
+        glEnable(GL_DEPTH_TEST);
         sceneRender = new SceneRender();
     }
 

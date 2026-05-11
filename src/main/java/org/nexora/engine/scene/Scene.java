@@ -1,20 +1,31 @@
 package org.nexora.engine.scene;
 
+import org.nexora.engine.renderer.Model;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Scene {
 
-    private final Map<String, Mesh> meshMap;
+    private final Map<String, Model> modelMap;
     private final Projection projection;
 
     public Scene(int width, int height) {
-        meshMap = new HashMap<>();
+        modelMap = new HashMap<>();
         projection = new Projection(width, height);
     }
 
-    public void addMesh(String meshId, Mesh mesh) {
-        meshMap.put(meshId, mesh);
+    public void addEntity(Entity entity) {
+        String modelId = entity.getModelId();
+        Model model = modelMap.get(modelId);
+        if (model == null) {
+            throw new RuntimeException("Could not find model [" + modelId + "]");
+        }
+        model.getEntitiesList().add(entity);
+    }
+
+    public void addModel(Model model) {
+        modelMap.put(model.getId(), model);
     }
 
     public void resize(int width, int height) {
@@ -22,11 +33,11 @@ public class Scene {
     }
 
     public void cleanup() {
-        meshMap.values().forEach(Mesh::cleanup);
+        modelMap.values().forEach(Model::cleanup);
     }
 
-    public Map<String, Mesh> getMeshMap() {
-        return meshMap;
+    public Map<String, Model> getModelMap() {
+        return modelMap;
     }
 
     public Projection getProjection() {

@@ -1,4 +1,4 @@
-package org.nexora.engine.scene;
+package org.nexora.engine.renderer;
 
 import org.joml.Matrix4f;
 import org.lwjgl.system.MemoryStack;
