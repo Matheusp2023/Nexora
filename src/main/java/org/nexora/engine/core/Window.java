@@ -18,6 +18,7 @@ public class Window {
     private static final int DEFAULT_WIDTH = 300;
 
     private final long windowHandle;
+    private final MouseInput mouseInput;
 
     private int height;
     private int width;
@@ -89,6 +90,8 @@ public class Window {
         glfwGetFramebufferSize(windowHandle, arrWidth, arrHeight);
         width = arrWidth[0];
         height = arrHeight[0];
+
+        mouseInput = new MouseInput(windowHandle);
     }
 
     private void keyCallBack(int key, int action) {
@@ -117,6 +120,10 @@ public class Window {
 
     public long getWindowHandle() {
         return windowHandle;
+    }
+
+    public MouseInput getMouseInput() {
+        return mouseInput;
     }
 
     public boolean isKeyPressed(int keyCode) {
