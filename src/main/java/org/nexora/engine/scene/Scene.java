@@ -1,6 +1,7 @@
 package org.nexora.engine.scene;
 
 import org.nexora.engine.renderer.Model;
+import org.nexora.engine.renderer.TextureCache;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,10 +10,12 @@ public class Scene {
 
     private final Map<String, Model> modelMap;
     private final Projection projection;
+    private final TextureCache textureCache;
 
     public Scene(int width, int height) {
         modelMap = new HashMap<>();
         projection = new Projection(width, height);
+        textureCache = new TextureCache();
     }
 
     public void addEntity(Entity entity) {
@@ -42,5 +45,9 @@ public class Scene {
 
     public Projection getProjection() {
         return projection;
+    }
+
+    public TextureCache getTextureCache() {
+        return textureCache;
     }
 }
